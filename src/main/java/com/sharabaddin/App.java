@@ -13,6 +13,7 @@ public class App {
             System.out.println();
         }
 
+
         Human jacob = new Human();
 
         HouseDoor firstDoor = new HouseDoor();
