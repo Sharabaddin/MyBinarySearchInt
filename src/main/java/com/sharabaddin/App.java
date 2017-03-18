@@ -3,11 +3,16 @@ package com.sharabaddin;
 /**
  * Enter point.
  * Jacob is a Human which open and close the door and check close or open now.
- * Its project use polymorphism.
+ * It`s project use polymorphism.
  * @author general1308@gmail.com
  */
 public class App {
     public static void main(String[] args) {
+
+        for (int i = 0; i < 2; i++) {
+            System.out.println();
+        }
+
         Human jacob = new Human();
 
         HouseDoor firstDoor = new HouseDoor();
@@ -19,6 +24,7 @@ public class App {
 
         jacob.closeDoor(firstDoor);
         jacob.check(firstDoor);
+        jacob.closeDoor(firstDoor);
 
         // Use the second door.
         jacob.openDoor(secondDoor);
