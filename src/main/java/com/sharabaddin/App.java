@@ -9,6 +9,13 @@ package com.sharabaddin;
 public class App {
     public static void main(String[] args) {
 
+        //int [] myList = {"1", "2", "3"};
+        //int [] myList = (5, 8, 2);
+        //int myList [] [] = {4,9,7,0};
+        int myList [] = {4, 3, 7};
+
+
+
         for (int i = 0; i < 2; i++) {
             System.out.println();
         }
