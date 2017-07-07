@@ -1,16 +1,19 @@
 package com.sharabaddin;
 
 
+import java.util.*;
+import java.util.function.Predicate;
+
 public class Searcher {
-    private static int index = 0;
+    private static int findElementIndex = 0;
 
     public static int binary(int[] array, int key) {
-        index = 0;
+        findElementIndex = 0;
 
-        // Check null.
-        if(array == null )
+        // Check null and empty.
+        if(array == null || array.length == 0) {
             return -1;
-
+        }
 
         // Check one element.
         if(array.length == 1) {
@@ -21,37 +24,58 @@ public class Searcher {
             }
         }
 
-        int[] arrayRes = difArray(array, key);
-        for (int i = array.length; i <= 1; i/=2) {
-            arrayRes = difArray(array, key);
-        }
-        return index;
-    }
+        // Not found
+        if(key < array[0] || key > array[array.length - 1])
+            return -1;
 
-    private static int[] difArray(int[] array, int key) {
-        int[] resultArray;
-        if (key < array[array.length / 2]) {
-
-            // Copy array.
-            resultArray = new int[array.length / 2];
-            for (int i = 0; i < array.length / 2; i++) {
-                resultArray[i] = array[i];
-            }
-            return resultArray;
-        } else if(key >= array[array.length / 2]) {
-            index += array.length / 2;
-            // Copy array.
-            resultArray = new int[array.length / 2];
-            for (int i = array.length / 2; i > array.length; i++) {
-                resultArray[i] = array[i];
-            }
-            return resultArray;
-        } else if(array[0] == key) {
-            // If found key .
-            return new int[]{key};
-        } else {
-            return new int[]{};
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < array.length; i++) {
+            map.put(i, array[i]);
         }
 
+
+
+        int middle = (array.length+1) / 2 - 1;
+        System.out.println("start:" + middle);
+        for (int i = array.length; i > 1; i /= 2) {
+
+            if(array[middle] == key)
+                return middle;
+
+
+            if (key <= array[middle]) {
+                System.out.println("left");
+
+                if(i<6) {
+                    middle--;
+                } else if(i<10) {
+                    middle -= 2;
+                } else
+                    middle-=3;
+
+                System.out.println(middle);
+                System.out.println("i=" + i);
+
+            } else {
+                System.out.println("right");
+
+                if(i<6) {
+                    middle++;
+                } else if(i<10) {
+                    middle += 2;
+                }else
+                    middle+=3;
+
+
+                System.out.println(middle);
+                System.out.println("i=" + i);
+            }
+
+        }
+        return middle;
+
+
     }
+
+
 }
