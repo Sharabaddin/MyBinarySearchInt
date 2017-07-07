@@ -28,10 +28,6 @@ public class Searcher {
         if(key < array[0] || key > array[array.length - 1])
             return -1;
 
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < array.length; i++) {
-            map.put(i, array[i]);
-        }
 
 
 
