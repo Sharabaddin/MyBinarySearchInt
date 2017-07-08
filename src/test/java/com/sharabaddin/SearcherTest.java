@@ -16,6 +16,16 @@ public class SearcherTest {
     }
 
     @Test
+    public void testBinary_sizeArrayMaxInteger() {
+        int[] array = new int[Integer.MAX_VALUE];
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            array[i] = i;
+        }
+
+        assertEquals(Integer.MAX_VALUE, Searcher.binary(array, Integer.MAX_VALUE));
+    }
+
+    @Test
     public void testBinary_notFoundDownRange() {
         assertEquals(-1, Searcher.binary(new int[] {2, 3 , 4}, 1));
     }

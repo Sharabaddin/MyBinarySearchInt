@@ -1,11 +1,7 @@
 package com.sharabaddin;
 
 public class Searcher {
-    private static int findElementIndex = 0;
-
     public static int binary(int[] array, int key) {
-        findElementIndex = 0;
-
         // Check null and empty.
         if(array == null || array.length == 0) {
             return -1;
@@ -24,52 +20,28 @@ public class Searcher {
         if(key < array[0] || key > array[array.length - 1])
             return -1;
 
-
-
-
+        // Search middle and check <> and offset on relative (size new range);
         int middle = (array.length+1) / 2 - 1;
-        System.out.println("start:" + middle);
         for (int i = array.length; i > 1; i /= 2) {
 
-            if(array[middle] == key)
+            if(array[middle] == key) {
                 return middle;
-
-
-            if (key <= array[middle]) {
-                System.out.println("left");
-
-                if(i<6) {
-                    middle--;
-                } else if(i<10) {
-                    middle -= 2;
-                } else
-                    middle-=3;
-
-                System.out.println(middle);
-                System.out.println("i=" + i);
-
-            } else {
-                System.out.println("right");
-
-                if(i<6) {
-                    middle++;
-                } else if(i<10) {
-                    middle += 2;
-                }else
-                    middle+=3;
-
-
-                System.out.println(middle);
-                System.out.println("i=" + i);
             }
 
+            if (key <= array[middle]) {
+                // Offset left.
+                middle-=(i + 2) / 4;
+            } else {
+                // Offset right.
+                middle+=(i + 2) / 4;
+            }
         }
 
-        if(array[middle] == key)
+        // Check found and no found in array not row
+        if(array[middle] == key) {
             return middle;
-        else
+        } else {
             return -1;
+        }
     }
-
-
 }
