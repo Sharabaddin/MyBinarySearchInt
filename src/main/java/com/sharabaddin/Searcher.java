@@ -1,9 +1,5 @@
 package com.sharabaddin;
 
-
-import java.util.*;
-import java.util.function.Predicate;
-
 public class Searcher {
     private static int findElementIndex = 0;
 
@@ -68,9 +64,11 @@ public class Searcher {
             }
 
         }
-        return middle;
 
-
+        if(array[middle] == key)
+            return middle;
+        else
+            return -1;
     }
 
 
