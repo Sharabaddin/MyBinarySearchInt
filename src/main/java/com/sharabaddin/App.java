@@ -7,6 +7,5 @@ public class App {
 
         // Output index 4 .
         System.out.println(Searcher.binary(array, 64));
-        System.out.println( Integer.MAX_VALUE);
     }
 }
